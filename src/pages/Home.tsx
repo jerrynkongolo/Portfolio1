@@ -7,6 +7,16 @@ function Home() {
     <main className="relative z-10 min-h-screen flex flex-col items-center justify-center p-4 text-center">
       <Navigation />
       
+      {/* Noise texture overlay */}
+      <div 
+        className="absolute inset-0 -z-10 pointer-events-none"
+        style={{
+          backgroundImage: 'url(/noise-texture.png)', // Absolute path
+          backgroundRepeat: 'repeat',
+          opacity: '0.5'
+        }}
+      />
+      
       <h1 className="font-display text-4xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-white/90
                    bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-white/70
                    animate-gradient bg-300% tracking-tight">
