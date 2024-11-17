@@ -17,23 +17,27 @@ export const Navigation = () => {
   return (
     <>
       <Logo />
-      <div className="fixed top-8 right-8 z-50 flex items-center gap-6">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="p-2 hover:opacity-70 transition-opacity"
-          aria-label="Toggle menu"
-        >
+      <div className="fixed top-8 right-8 z-[60] flex items-center gap-6">
+        <div className="relative w-6 h-6">
           {isOpen ? (
-            <X size={24} className="text-gray-900 dark:text-white" />
+            <X 
+              size={24} 
+              className="text-gray-900 dark:text-white absolute inset-0"
+              onClick={() => setIsOpen(false)}
+            />
           ) : (
-            <Menu size={24} className="text-gray-900 dark:text-white" />
+            <Menu 
+              size={24} 
+              className="text-gray-900 dark:text-white absolute inset-0"
+              onClick={() => setIsOpen(true)}
+            />
           )}
-        </button>
+        </div>
         <ThemeToggle />
       </div>
 
       <div 
-        className={`fixed inset-0 bg-white dark:bg-[#1a1a1a] z-40 transition-transform duration-500 ease-in-out ${
+        className={`fixed inset-0 bg-white dark:bg-[#1a1a1a] z-50 transition-transform duration-500 ease-in-out ${
           isOpen ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
