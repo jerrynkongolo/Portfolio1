@@ -9,7 +9,7 @@ function Contact() {
       
       <div className="max-w-6xl mx-auto pt-36">
         <div className="mb-12">
-          <h1 className="font-display text-4xl md:text-6xl font-bold mb-12 text-gray-900 dark:text-white/90 tracking-tight">
+          <h1 className="font-display text-4xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-white/90 tracking-tight">
             CONTACT
           </h1>
           <div className="w-full h-[1px] md:h-[2px] bg-gray-900 dark:bg-white/90" />
