@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import type { Project } from "../../types/project";
 
@@ -13,13 +12,9 @@ export const ProjectGridCard: React.FC<ProjectGridCardProps> = ({
   const navigate = useNavigate();
 
   return (
-    <motion.button
+    <button
       onClick={() => navigate(`/projects/${project.id}`)}
-      className="group w-full text-left rounded-xl overflow-hidden bg-white/70 dark:bg-white/5 backdrop-blur-sm border border-gray-200/80 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow"
-      whileTap={{ scale: 0.98 }}
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+      className="group w-full text-left rounded-xl overflow-hidden bg-white/70 dark:bg:white/5 backdrop-blur-sm border border-gray-200/80 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
@@ -46,6 +41,6 @@ export const ProjectGridCard: React.FC<ProjectGridCardProps> = ({
           </p>
         )}
       </div>
-    </motion.button>
+    </button>
   );
 };
