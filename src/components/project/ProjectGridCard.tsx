@@ -21,17 +21,14 @@ export const ProjectGridCard: React.FC<ProjectGridCardProps> = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
     >
-      <motion.div
-        className="relative aspect-[4/3] overflow-hidden"
-        layoutId={`project-image-${project.id}`}
-      >
+      <div className="relative aspect-[4/3] overflow-hidden">
         <img
           src={(project.images && project.images[0]) || project.image}
           alt={project.name}
           className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-[1.03]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-70" />
-      </motion.div>
+      </div>
 
       <div className="p-5">
         <div className="mb-2">

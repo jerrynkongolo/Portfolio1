@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { MouseEvent, useState } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { ProjectCard } from "../components/project/ProjectCard";
 import { projects } from "../types/project";
 
@@ -14,10 +14,14 @@ function ProjectDetail() {
     return <div>Project not found</div>;
   }
 
-  const images = project.images && project.images.length > 0 ? project.images : [project.image];
+  const images =
+    project.images && project.images.length > 0
+      ? project.images
+      : [project.image];
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const goPrev = () => setActiveIndex((i) => (i - 1 + images.length) % images.length);
+  const goPrev = () =>
+    setActiveIndex((i) => (i - 1 + images.length) % images.length);
   const goNext = () => setActiveIndex((i) => (i + 1) % images.length);
 
   return (
@@ -37,17 +41,10 @@ function ProjectDetail() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div>
-            <h1 className="font-display text-5xl font-bold mb-4 text-gray-900 dark:text-white/90 capitalize">
-              {project.name}
-            </h1>
-
-            <ProjectCard project={project} />
-          </div>
-
-          <motion.div
-            className="relative aspect-[4/3] overflow-hidden rounded-lg"
-            layoutId={`project-image-${project.id}`}
+          {/* Image first on mobile */}
+          <div
+            className="relative aspect-[4/3] overflow-hidden rounded-lg order-1"
+            onClick={() => setLightboxOpen(true)}
           >
             <img
               key={images[activeIndex]}
@@ -58,21 +55,87 @@ function ProjectDetail() {
             {images.length > 1 && (
               <div className="absolute inset-0 flex items-center justify-between p-3">
                 <button
-                  onClick={goPrev}
+                  onClick={(e: MouseEvent) => {
+                    e.stopPropagation();
+                    goPrev();
+                  }}
                   className="px-3 py-2 rounded-md bg-black/30 text-white text-sm hover:bg-black/40"
                 >
                   Prev
                 </button>
                 <button
-                  onClick={goNext}
+                  onClick={(e: MouseEvent) => {
+                    e.stopPropagation();
+                    goNext();
+                  }}
                   className="px-3 py-2 rounded-md bg-black/30 text-white text-sm hover:bg-black/40"
                 >
                   Next
                 </button>
               </div>
             )}
-          </motion.div>
+          </div>
+
+          {/* Text second on mobile */}
+          <div className="order-2">
+            <h1 className="font-display text-5xl font-bold mb-4 text-gray-900 dark:text-white/90 capitalize">
+              {project.name}
+            </h1>
+
+            <ProjectCard project={project} />
+          </div>
         </motion.div>
+
+        {/* Lightbox Modal */}
+        {lightboxOpen && (
+          <div
+            className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+            onClick={() => setLightboxOpen(false)}
+          >
+            <button
+              className="absolute top-4 right-4 p-2 rounded-md bg-white/10 text-white hover:bg-white/20"
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightboxOpen(false);
+              }}
+              aria-label="Close"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {images.length > 1 && (
+              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-between px-4">
+                <button
+                  className="p-3 rounded-full bg-white/10 text-white hover:bg-white/20"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    goPrev();
+                  }}
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                <button
+                  className="p-3 rounded-full bg-white/10 text-white hover:bg-white/20"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    goNext();
+                  }}
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </div>
+            )}
+
+            <img
+              src={images[activeIndex]}
+              alt={`${project.name} full ${activeIndex + 1}`}
+              className="max-w-[95vw] max-h-[85vh] object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

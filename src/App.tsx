@@ -7,7 +7,7 @@ import Projects from "./pages/Projects";
 import ProjectDetail from "./pages/ProjectDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 
 function App() {
@@ -18,7 +18,9 @@ function App() {
           <Background />
           <div className="grain-overlay" />
           <Navigation />
-          <AnimatedRoutes />
+          <LayoutGroup id="routes">
+            <AnimatedRoutes />
+          </LayoutGroup>
         </div>
       </RouteChangeWrapper>
     </Router>
