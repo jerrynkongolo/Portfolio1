@@ -5,10 +5,14 @@ export const Logo = () => {
   return (
     <Link 
       to="/" 
-      className="fixed top-8 left-8 z-50 font-display text-2xl font-bold 
-                 text-gray-900 dark:text-white hover:opacity-70 transition-opacity"
+      className="fixed top-8 left-8 z-50 hover:opacity-80 transition-opacity"
+      aria-label="Home"
     >
-      <span className="tracking-tighter">RS</span>
+      <img
+        src="/logo/logo.png"
+        alt="Logo"
+        className="h-8 w-auto object-contain md:h-10"
+      />
     </Link>
   );
 };
