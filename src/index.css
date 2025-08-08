@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-300\% {
+  background-size: 300% 300%;
+}
+
+.page-section {
+  /* Consistent page spacing below fixed nav and around content */
+  padding-top: clamp(6rem, 10vw, 9rem);
+  padding-bottom: clamp(3rem, 6vw, 4rem);
+  padding-left: clamp(1rem, 4vw, 3rem);
+  padding-right: clamp(1rem, 4vw, 3rem);
+}
+
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/noise-texture.png");
+  background-size: cover;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 10;
+}
