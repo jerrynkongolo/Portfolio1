@@ -1,5 +1,4 @@
 import React, { MouseEvent, useState } from "react";
-import { motion } from "framer-motion";
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { ProjectCard } from "../components/project/ProjectCard";
@@ -19,6 +18,7 @@ function ProjectDetail() {
       ? project.images
       : [project.image];
   const [activeIndex, setActiveIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   const goPrev = () =>
     setActiveIndex((i) => (i - 1 + images.length) % images.length);
@@ -35,19 +35,13 @@ function ProjectDetail() {
           Back to projects
         </button>
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-12"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Image first on mobile */}
           <div
             className="relative aspect-[4/3] overflow-hidden rounded-lg order-1"
             onClick={() => setLightboxOpen(true)}
           >
             <img
-              key={images[activeIndex]}
               src={images[activeIndex]}
               alt={`${project.name} ${activeIndex + 1}`}
               className="w-full h-full object-cover"
@@ -84,7 +78,7 @@ function ProjectDetail() {
 
             <ProjectCard project={project} />
           </div>
-        </motion.div>
+        </div>
 
         {/* Lightbox Modal */}
         {lightboxOpen && (
