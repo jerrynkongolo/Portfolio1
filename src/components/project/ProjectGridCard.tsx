@@ -26,7 +26,7 @@ export const ProjectGridCard: React.FC<ProjectGridCardProps> = ({
         layoutId={`project-image-${project.id}`}
       >
         <img
-          src={project.image}
+          src={(project.images && project.images[0]) || project.image}
           alt={project.name}
           className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-[1.03]"
         />

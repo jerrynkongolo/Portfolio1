@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
@@ -13,6 +13,12 @@ function ProjectDetail() {
   if (!project) {
     return <div>Project not found</div>;
   }
+
+  const images = project.images && project.images.length > 0 ? project.images : [project.image];
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const goPrev = () => setActiveIndex((i) => (i - 1 + images.length) % images.length);
+  const goNext = () => setActiveIndex((i) => (i + 1) % images.length);
 
   return (
     <div className="min-h-screen p-4 sm:p-8 pt-28 sm:pt-36">
@@ -44,10 +50,27 @@ function ProjectDetail() {
             layoutId={`project-image-${project.id}`}
           >
             <img
-              src={project.image}
-              alt={project.name}
+              key={images[activeIndex]}
+              src={images[activeIndex]}
+              alt={`${project.name} ${activeIndex + 1}`}
               className="w-full h-full object-cover"
             />
+            {images.length > 1 && (
+              <div className="absolute inset-0 flex items-center justify-between p-3">
+                <button
+                  onClick={goPrev}
+                  className="px-3 py-2 rounded-md bg-black/30 text-white text-sm hover:bg-black/40"
+                >
+                  Prev
+                </button>
+                <button
+                  onClick={goNext}
+                  className="px-3 py-2 rounded-md bg-black/30 text-white text-sm hover:bg-black/40"
+                >
+                  Next
+                </button>
+              </div>
+            )}
           </motion.div>
         </motion.div>
       </div>

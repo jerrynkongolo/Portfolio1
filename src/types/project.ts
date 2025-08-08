@@ -3,6 +3,7 @@ export interface Project {
   name: string;
   category: string;
   image: string;
+  images?: string[];
   link: string;
   description?: string;
   technologies?: string[];
@@ -32,6 +33,18 @@ export const projects: Project[] = [
     technologies: ['React', 'Tailwind CSS', 'Node.js'],
     year: '2023',
     client: 'Act Responsable'
+  },
+  {
+    id: 3,
+    name: 'Sandas LT',
+    category: 'Design Refresh',
+    image: '/projects/sandas-1.jpg',
+    images: ['/projects/sandas-1.jpg', '/projects/sandas-2.jpg'],
+    link: '#',
+    description: 'A clean, modern redesign focusing on clarity, consistent typography, and subtle motion. The refresh improves hierarchy, spacing, and navigation for a smoother browsing experience across pages.',
+    technologies: ['Figma', 'React', 'Tailwind CSS'],
+    year: '2024',
+    client: 'Sandas LT'
   },
   // ... rest of the projects remain unchanged
 ];
