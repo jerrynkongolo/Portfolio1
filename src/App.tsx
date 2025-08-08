@@ -8,25 +8,22 @@ import ProjectDetail from "./pages/ProjectDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 // Removed route-level animations for mobile stability
-import { useLocation } from "react-router-dom";
 
 function App() {
   return (
     <Router>
-      <RouteChangeWrapper>
-        <div className="min-h-screen bg-white dark:bg-[#1a1a1a] transition-colors duration-300">
-          <Background />
-          <div className="grain-overlay" />
-          <Navigation />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/projects/:id" element={<ProjectDetail />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </div>
-      </RouteChangeWrapper>
+      <div className="min-h-screen bg-white dark:bg-[#1a1a1a] transition-colors duration-300">
+        <Background />
+        <div className="grain-overlay" />
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:id" element={<ProjectDetail />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
