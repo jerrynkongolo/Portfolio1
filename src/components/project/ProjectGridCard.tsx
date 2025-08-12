@@ -10,7 +10,14 @@ export const ProjectGridCard: React.FC<ProjectGridCardProps> = ({ project }) => 
   return (
     <Link className="card" to={`/projects/${project.id}`}>
       <figure className="card__media">
-        <img src={(project.images && project.images[0]) || project.image} alt={`${project.name} dashboard redesign`} loading="lazy" />
+        <img
+          src="/images/cover-900.webp"
+          alt="Project cover"
+          width="900" height="560"
+          loading="lazy" decoding="async"
+          sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
+          srcSet="/images/cover-600.webp 600w, /images/cover-900.webp 900w, /images/cover-1200.webp 1200w"
+        />
       </figure>
       <div className="card__meta">
         <span className="card__logo">{project.name.toUpperCase()}</span>
