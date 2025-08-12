@@ -8,24 +8,22 @@ interface ProjectGridCardProps {
 
 export const ProjectGridCard: React.FC<ProjectGridCardProps> = ({ project }) => {
   return (
-    <Link className="card" to={`/projects/${project.id}`}>
+    <a className="card" href={`/work/${project.id}`}>
       <figure className="card__media">
         <img
-          src="/images/cover-900.webp"
-          alt="Project cover"
-          width="900" height="560"
-          loading="lazy" decoding="async"
+          src={`/images/work/${project.id}-cover-900.webp`}
+          alt={`${project.name} dashboard redesign`}
+          width="900" height="560" loading="lazy" decoding="async"
           sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
-          srcSet="/images/cover-600.webp 600w, /images/cover-900.webp 900w, /images/cover-1200.webp 1200w"
+          srcSet={`/images/work/${project.id}-cover-600.webp 600w,
+                   /images/work/${project.id}-cover-900.webp 900w,
+                   /images/work/${project.id}-cover-1200.webp 1200w`}
         />
       </figure>
       <div className="card__meta">
-        <span className="card__logo">{project.name.toUpperCase()}</span>
-        <div className="card__text">
-          <h3>{project.name}</h3>
-          <p>Role: {project.role} • {project.year}</p>
-        </div>
+        <h3>{project.name}</h3>
+        <p className="muted">Role: {project.role} • {project.year}</p>
       </div>
-    </Link>
+    </a>
   );
 };
