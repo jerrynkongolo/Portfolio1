@@ -1,30 +1,36 @@
-import React from "react";
-import { CircleButton } from "../components/CircleButton";
+import React from 'react';
 
 function Home() {
   return (
-    <main className="relative z-10 min-h-screen flex flex-col items-center justify-center p-4 text-center">
-      <h1
-        className="font-display text-4xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-white/90
-                   bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-white/70
-                   animate-gradient bg-300% tracking-tight"
-      >
-        Hi, I'm Jerry from Raffiki Studio
-      </h1>
+    <>
+      <header className="site-header">
+        <a className="skip-link" href="#content">Skip to content</a>
 
-      <p
-        className="font-sans text-lg md:text-xl mb-8 text-gray-600 dark:text-white/70
-                  font-light tracking-wide max-w-2xl"
-      >
-        I'm a graphic designer, mobile and web front-end developer, UX/UI
-        designer, traditional painter, and photographer.
-      </p>
+        <nav className="nav" aria-label="Primary">
+          <a className="logo" href="/">Rafikki Studio</a>
+          <ul className="nav__links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a className="btn btn--ghost btn--sm" href="mailto:you@yourmail.com">Contact</a></li>
+            <li><a className="btn btn--sm" href="/resume.pdf">Résumé</a></li>
+          </ul>
+        </nav>
 
-      <div className="flex flex-wrap justify-center gap-12 mb-8">
-        <CircleButton to="/projects">View Projects</CircleButton>
-        <CircleButton to="/about">Learn More</CircleButton>
-      </div>
-    </main>
+        <section className="hero">
+          <p className="eyebrow">Available for freelance & contract</p>
+          <h1>I help teams design and build polished products—UI/UX, front‑end, and brand identity.</h1>
+          <p className="subhead">Product designer who codes. I turn research and prototypes into production‑ready UI and brand systems.</p>
+          <div className="cta">
+            <a className="btn" href="#work">View case studies</a>
+            <a className="btn btn--ghost" href="mailto:you@yourmail.com">Book a call</a>
+          </div>
+        </section>
+      </header>
+
+      <main id="content">
+        {/* Your sections: Work, About, etc. */}
+      </main>
+    </>
   );
 }
 
