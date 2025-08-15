@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { ProjectCard } from "../components/project/ProjectCard";
 import { projects } from "../types/project";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 import {
   Carousel,
   CarouselContent,
@@ -15,6 +17,8 @@ function ProjectDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const project = projects.find((p) => p.id === Number(id));
+  const [open, setOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   if (!project) {
     return <div>Project not found</div>;
@@ -24,6 +28,11 @@ function ProjectDetail() {
     project.images && project.images.length > 0
       ? project.images
       : [project.image];
+
+  const handleImageClick = (index: number) => {
+    setCurrentIndex(index);
+    setOpen(true);
+  };
 
   return (
     <div className="min-h-screen p-4 sm:p-8 pt-28 sm:pt-36">
@@ -43,7 +52,7 @@ function ProjectDetail() {
               <CarouselContent>
                 {images.map((image, index) => (
                   <CarouselItem key={index}>
-                    <div className="p-1">
+                    <div className="p-1" onClick={() => handleImageClick(index)}>
                       <img
                         src={image}
                         alt={`${project.name} ${index + 1}`}
@@ -68,6 +77,12 @@ function ProjectDetail() {
           </div>
         </div>
       </div>
+      <Lightbox
+        open={open}
+        close={() => setOpen(false)}
+        slides={images.map((image) => ({ src: image }))}
+        index={currentIndex}
+      />
     </div>
   );
 }

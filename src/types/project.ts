@@ -25,4 +25,17 @@ export const projects: Project[] = [
     year: "2025",
     client: "Sandas LT",
   },
+  {
+    id: 4,
+    name: "CRM Dashboard concept",
+    category: "Web Development",
+    image: "/new-project/image1.png",
+    images: ["/new-project/image1.png", "/new-project/image2.png"],
+    link: "#",
+    description:
+      "This is a new project that I have been working on. It is a web application that does cool things.",
+    technologies: ["React", "TypeScript", "Tailwind CSS"],
+    year: "2025",
+    client: "Personal Project",
+  },
 ];
