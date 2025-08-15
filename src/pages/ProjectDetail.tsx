@@ -60,7 +60,7 @@ function ProjectDetail() {
 
           {/* Text second on mobile */}
           <div className="order-2">
-            <h1 className="font-display text-5xl font-bold mb-4 text-gray-900 dark:text-white/90 capitalize">
+            <h1 className="font-display text-3xl font-bold mb-4 text-gray-900 dark:text-white/90 capitalize">
               {project.name}
             </h1>
 

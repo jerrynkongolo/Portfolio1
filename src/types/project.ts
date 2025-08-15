@@ -22,7 +22,7 @@ export const projects: Project[] = [
     description:
       "A clean, modern redesign focusing on clarity, consistent typography, and subtle motion. The refresh improves hierarchy, spacing, and navigation for a smoother browsing experience across pages.",
     technologies: ["Figma", "React", "Tailwind CSS"],
-    year: "2024",
+    year: "2025",
     client: "Sandas LT",
   },
 ];

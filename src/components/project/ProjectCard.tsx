@@ -10,7 +10,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   
   return (
     <div className="space-y-8">
-      <p className="text-lg text-gray-600 dark:text-white/70">
+      <p className="text-base text-gray-600 dark:text-white/70">
         {project.description}
       </p>
 
